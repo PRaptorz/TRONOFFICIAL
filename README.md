@@ -1,16 +1,17 @@
-# [Insert Your Game Title Here]
+# TRON Fangame
 
-**Developers:** [Your Name] and [Partner's Name]
-**Date:** [Month, Year]
+**Developers:** Anirudha Patel S.K and Adam Wakelin
+**Date:** March, 2026
 **Course:** AP Computer Science A 
 
 ---
 
 ## 🎮 Game Description
-[Write a 2-3 sentence pitch for your game. What is the goal? What is the core mechanic? E.g., "Space Defender is a 2D top-down shooter where the player must protect their home planet from endless waves of incoming asteroids. Survive as long as you can to get the high score!"]
+This Tron fan-game is based on the classic 1982 Tronaracade minigame, lightcycles. 2 player 1v1 game, players control bikes.  Players will play in a grid arena with the bikes. The Bikes will produce a light trail that is collidable, and the main goal is to try and get the opponents bike to crash into your light trail, or trap and make them crash into their own light trail. 
+
 
 ## 🕹️ Controls
-* **[W, A, S, D]** or **[Arrow Keys]**: Move the player.
+* **[W, A, S, D]** : To Control Blue Bike **[Arrow Keys]**: To Control Yellow Bike.
 * **[Spacebar]** or **[Left Mouse Click]**: Shoot / Jump / Interact.
 * **[P]**: Pause the game.
 * **[Escape]**: Quit.

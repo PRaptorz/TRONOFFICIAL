@@ -1,23 +1,59 @@
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
+//
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import java.util.ArrayList;
+import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class MyGame extends ApplicationAdapter {
+    Texture backgroundTexture;
+    Texture bucketTexture;
+    Texture dropTexture;
+    Sound dropSound;
+    Music music;
+    SpriteBatch spriteBatch;
+    FitViewport viewport;
+    Sprite bucketSprite;
+    Vector2 touchPos;
+    ArrayList<Sprite> dropSprites;
+    float dropTimer;
+    Rectangle bucketRectangle;
+    Rectangle dropRectangle;
+    
     private SpriteBatch batch;
     private ArrayList<GameObject> activeObjects;
+    private Texture background;
+    private OrthographicCamera camera;
+    private FitViewport view;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         activeObjects = new ArrayList<GameObject>();
+        background = new Texture("assets/TRON Background.png");
+        // camera = new OrthographicCamera();
+        // float height = 4000;
+        // float width = 3000;
+        // view = new FitViewport(width, height, camera);
 
-        // TODO 3: Instantiate your Player subclass and add it to activeObjects.
-
-
-        // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
-        //         starting Y-coordinates and add them to activeObjects.
+       
         
     }
 
@@ -25,6 +61,7 @@ public class MyGame extends ApplicationAdapter {
     @Override
     public void render() {
         // Boilerplate: Clear the screen to black each frame
+        // view.apply();
         Gdx.gl.glClearColor(.25f, .25f, .25f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -33,15 +70,13 @@ public class MyGame extends ApplicationAdapter {
         // We cast it to a double to stay strictly within the AP CSA Java standards.
         double deltaTime = (double) Gdx.graphics.getDeltaTime();
 
-        // --- AP REVIEW: POLYMORPHISM ---
-        // TODO 5: Write a standard or enhanced for-loop to iterate through activeObjects.
         // For each object, call its move() method.
 
         
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
-        // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
-
+        
+        batch.draw(background, 0, 0);
 
         batch.end();
 
