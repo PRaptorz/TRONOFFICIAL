@@ -47,7 +47,7 @@ public class MyGame extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         activeObjects = new ArrayList<GameObject>();
-        background = new Texture("assets/TRON Background.png");
+        background = new Texture("assets/TRON Background - small.png");
         // camera = new OrthographicCamera();
         // float height = 4000;
         // float width = 3000;
