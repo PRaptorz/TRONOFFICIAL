@@ -7,7 +7,7 @@ public class Player extends GameObject{
 
 
     public Player(double x, double y) {
-        super(x, y, 50, 50, "player1.png");
+        super(x, y, 50, 50, "assets/player1.png");
         speed = 200;
     }
     public void move(double deltaTime) {
@@ -15,16 +15,13 @@ public class Player extends GameObject{
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
             setX(getX()- speed * deltaTime);
         }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+        else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             setX(getX()+ speed * deltaTime);
         }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+        else if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             setY(getY()+ speed * deltaTime);
         }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+        else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             setY(getY()- speed * deltaTime);
         }
     }

@@ -42,12 +42,21 @@ public class MyGame extends ApplicationAdapter {
     private Texture background;
     private OrthographicCamera camera;
     private FitViewport view;
+    private Player p1;
+    private Player p2;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         activeObjects = new ArrayList<GameObject>();
         background = new Texture("assets/TRON Background - small.png");
+
+        p1 = new Player(50, 50);
+
+        activeObjects.add(p1);
+
+        // p2 = new Player2()
+
         // camera = new OrthographicCamera();
         // float height = 4000;
         // float width = 3000;
@@ -71,12 +80,19 @@ public class MyGame extends ApplicationAdapter {
         double deltaTime = (double) Gdx.graphics.getDeltaTime();
 
         // For each object, call its move() method.
+        for(GameObject obj : activeObjects){
+            obj.move(deltaTime);
+        }
 
         
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
         
         batch.draw(background, 0, 0);
+
+        for(GameObject obj : activeObjects){
+            obj.draw(batch);
+        }
 
         batch.end();
 
