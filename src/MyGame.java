@@ -43,7 +43,7 @@ public class MyGame extends ApplicationAdapter {
     private OrthographicCamera camera;
     private FitViewport view;
     private Player p1;
-    private Player p2;
+    private Player2 p2;
 
     @Override
     public void create() {
@@ -51,9 +51,11 @@ public class MyGame extends ApplicationAdapter {
         activeObjects = new ArrayList<GameObject>();
         background = new Texture("assets/TRON Background - small.png");
 
-        p1 = new Player(50, 50);
+        p1 = new Player(300, 50);
+        p2 = new Player2(300,500);
 
         activeObjects.add(p1);
+        activeObjects.add(p2);
 
         // p2 = new Player2()
 

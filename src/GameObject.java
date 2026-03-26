@@ -19,7 +19,7 @@ public class GameObject {
         this.height = height;
         this.image = new Texture(imagePath);
         // AP Review: Casting double to int for the LibGDX Rectangle class
-        this.hitbox = new Rectangle((int) x, (int) y, width, height);
+        this.hitbox = new Rectangle((int) x, (int) y, image.getWidth(), image.getHeight());
     }
 
     // TODO 1: Write getter methods for x, y, and hitbox.
@@ -47,6 +47,10 @@ public class GameObject {
     public void setY(double y){
         this.y = y;
         hitbox.setPosition((int)x, (int)y);
+    }
+    public void setImg(String imagePath){
+        this.image = new Texture(imagePath);
+        this.hitbox = new Rectangle((int) x, (int) y, image.getWidth(), image.getHeight());
     }
 
 
