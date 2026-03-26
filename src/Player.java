@@ -29,6 +29,13 @@ public class Player extends GameObject{
             setY(getY()- speed * deltaTime);
             setImg("assets/blueBackward.png");
         }
+        //boundaries
+        if(getX()<0){
+            System.out.println("Out of bounds");
+        }
+        if(getX()>750){
+            System.out.println("Out of bounds");
+        }
     }
     
 }
