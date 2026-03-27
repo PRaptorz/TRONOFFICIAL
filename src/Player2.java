@@ -31,5 +31,22 @@ public class Player2 extends GameObject {
             setY(getY()- speed * deltaTime);
             setImg("assets/yellowBackward.png");
         }
+        //boundaries
+        if(getX()<0){
+            System.out.println("Out of bounds");
+            setImg("assets/Explosion.png");
+        }
+        if(getX()>750){
+            System.out.println("Out of bounds");
+            setImg("assets/Explosion.png");
+        }
+        if(getY()<0){
+            System.out.println("Out of bounds");
+            setImg("assets/Explosion.png"); 
+        }
+        if(getY()>735){
+            System.out.println("Out of bounds");
+            setImg("assets/Explosion.png"); 
+        }
     }
 }
