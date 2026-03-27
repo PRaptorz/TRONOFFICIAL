@@ -44,6 +44,8 @@ public class MyGame extends ApplicationAdapter {
     private FitViewport view;
     private Player p1;
     private Player2 p2;
+    private int[][] colornums; 
+
 
     @Override
     public void create() {
@@ -56,6 +58,13 @@ public class MyGame extends ApplicationAdapter {
 
         activeObjects.add(p1);
         activeObjects.add(p2);
+
+        colornums = new int [100][100];
+
+        // int width = 800;
+        // int height = 600;
+        // // 0: empty, 1: player 1, 2: player 2
+        // int[][] colornum = new int[width][height]; 
 
         // p2 = new Player2()
 
@@ -86,6 +95,8 @@ public class MyGame extends ApplicationAdapter {
             obj.move(deltaTime);
         }
 
+
+
         
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
@@ -95,6 +106,16 @@ public class MyGame extends ApplicationAdapter {
         for(GameObject obj : activeObjects){
             obj.draw(batch);
         }
+
+        // for (int x = 0; x < width; x++) {
+        //     for (int y = 0; y < height; y++) {
+        //         if (grid[x][y] == 1) {
+        //             // Draw Blue pixel/rectangle
+        //         } else if (grid[x][y] == 2) {
+        //             // Draw Orange pixel/rectangle
+        //         }
+        //     }
+        // }
 
         batch.end();
 

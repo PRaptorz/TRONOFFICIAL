@@ -4,11 +4,13 @@ import com.badlogic.gdx.Input;
 public class Player2 extends GameObject {
     
         private int speed;
+        private int colornum;
 
 
     public Player2(double x, double y) {
         super(x, y, 18, 18, "assets/yellowBackward.png");
         speed = 200;
+        colornum = 2;
     }
     public void move(double deltaTime) {
 
