@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import java.util.ArrayList;
 //
 import com.badlogic.gdx.ApplicationListener;
@@ -38,6 +40,7 @@ public class MyGame extends ApplicationAdapter {
     Rectangle dropRectangle;
     
     private SpriteBatch batch;
+    private ShapeRenderer pencil;
     private ArrayList<GameObject> activeObjects;
     private Texture background;
     private OrthographicCamera camera;
@@ -50,6 +53,7 @@ public class MyGame extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
+        pencil = new ShapeRenderer();
         activeObjects = new ArrayList<GameObject>();
         background = new Texture("assets/TRON Background - small.png");
 
@@ -118,6 +122,10 @@ public class MyGame extends ApplicationAdapter {
         // }
 
         batch.end();
+        pencil.begin(ShapeRenderer.ShapeType.Filled);
+        pencil.setColor(Color.BLUE);
+        pencil.rect(100,200,15,15);
+        pencil.end();
 
         // --- AP REVIEW: ARRAYLIST TRAVERSAL & REMOVAL ---
         // TODO 7: Write collision logic. 
