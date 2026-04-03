@@ -47,7 +47,7 @@ public class MyGame extends ApplicationAdapter {
     private FitViewport view;
     private Player p1;
     private Player2 p2;
-    private int[][] colornums; 
+    // private int[][] colornums; 
 
 
     @Override
@@ -63,7 +63,7 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(p1);
         activeObjects.add(p2);
 
-        colornums = new int [100][100];
+        // colornums = new int [100][100];
 
         // int width = 800;
         // int height = 600;
@@ -123,9 +123,18 @@ public class MyGame extends ApplicationAdapter {
 
         batch.end();
         pencil.begin(ShapeRenderer.ShapeType.Filled);
-        pencil.setColor(Color.BLUE);
-        pencil.rect(100,200,15,15);
+        for(float[] pos : p1.getTrail()){
+            pencil.setColor(Color.BLUE);
+            pencil.rect(pos[0], pos[1], 5,5);
+        }
+        for(float[] pos : p2.getTrail()){
+            pencil.setColor(Color.YELLOW);
+            pencil.rect(pos[0], pos[1], 5,5);
+        }
+        // pencil.rect(100,200,5,5);
         pencil.end();
+
+        //?
 
         // --- AP REVIEW: ARRAYLIST TRAVERSAL & REMOVAL ---
         // TODO 7: Write collision logic. 

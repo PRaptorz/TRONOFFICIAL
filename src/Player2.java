@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
@@ -5,6 +7,7 @@ public class Player2 extends GameObject {
     
         private int speed;
         private int colornum;
+        private ArrayList<float[]> trail = new ArrayList<>();
 
 
     public Player2(double x, double y) {
@@ -33,6 +36,8 @@ public class Player2 extends GameObject {
             setY(getY()- speed * deltaTime);
             setImg("assets/yellowBackward.png");
         }
+        trail.add(new float[]{(float) getX(),(float) getY()});
+
         //boundaries
         if(getX()<0){
             System.out.println("Out of bounds");
@@ -51,4 +56,8 @@ public class Player2 extends GameObject {
             setImg("assets/Explosion.png"); 
         }
     }
+    public ArrayList<float[]> getTrail(){
+        return trail;
+    }
+    
 }
