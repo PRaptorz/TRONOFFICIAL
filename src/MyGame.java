@@ -111,17 +111,11 @@ public class MyGame extends ApplicationAdapter {
             obj.draw(batch);
         }
 
-        // for (int x = 0; x < width; x++) {
-        //     for (int y = 0; y < height; y++) {
-        //         if (grid[x][y] == 1) {
-        //             // Draw Blue pixel/rectangle
-        //         } else if (grid[x][y] == 2) {
-        //             // Draw Orange pixel/rectangle
-        //         }
-        //     }
-        // }
+      
 
         batch.end();
+
+        //LIGHT TRAIL CODE: postion has issues
         pencil.begin(ShapeRenderer.ShapeType.Filled);
         for(float[] pos : p1.getTrail()){
             pencil.setColor(Color.BLUE);
@@ -135,13 +129,6 @@ public class MyGame extends ApplicationAdapter {
         pencil.end();
 
         //?
-
-        // --- AP REVIEW: ARRAYLIST TRAVERSAL & REMOVAL ---
-        // TODO 7: Write collision logic. 
-        // You must iterate through the list to check if the player overlaps with enemies.
-        // See the cheat sheet for the overlap method!
-        // NOTE: If you are removing items from an ArrayList, how must you structure 
-        // your for-loop to avoid skipping elements?
 
     }
     
