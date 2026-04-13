@@ -119,18 +119,32 @@ public class MyGame extends ApplicationAdapter {
         pencil.begin(ShapeRenderer.ShapeType.Filled);
         for(float[] pos : p1.getTrail()){
             pencil.setColor(Color.BLUE);
-            pencil.rect(pos[0], pos[1], 5,5);
+            pencil.rect(pos[0], pos[1], 10,10);
         }
         for(float[] pos : p2.getTrail()){
             pencil.setColor(Color.YELLOW);
-            pencil.rect(pos[0], pos[1], 5,5);
+            pencil.rect(pos[0], pos[1], 10,10);
         }
+        
         // pencil.rect(100,200,5,5);
         pencil.end();
 
         //?
 
     }
+
+    // Collision Method into light trail: work in progress 
+        // public boolean isColliding(float bikeX, float bikeY, List<float[]>trail){
+        //     for(float[] pos : trail){
+        //         float tx = pos[0];
+        //         float ty = pos[1];
+
+        //         if(bikeX < tx + 10 && bikeX +10 > tx && bikeY < ty + 10 && bikeY + 10 > ty){ 
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
     
     @Override
     public void dispose() {

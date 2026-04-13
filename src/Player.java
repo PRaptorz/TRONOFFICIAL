@@ -40,22 +40,22 @@ public class Player extends GameObject{
         // trail.add(new float[]{(float) getX(),(float) getY()});
 
         //*Note to Adam" Tried adding code here to fix postioning issues the light trail had, if you can find the problem, fix the code,and add code to Player2 class */
-        float trailX = (float) getX();
-        float trailY = (float) getY();
+        // float trailX = (float) getX();
+        // float trailY = (float) getY();
 
-        if (direction.equals("UP")){
+        // if (direction.equals("UP")){
             
-            trailX += 18/2f -2;
-            trailY += 0;
-        }
-        else if(direction.equals("DOWN")){
-            trailX += 18;
-            trailY += 18/2f -2;
-        }
-        else if (direction.equals("RIGHT")){
-            trailX += 0;
-            trailY += 18 / 2f - 2;
-        }
+        //     trailX += 18/2f -2;
+        //     trailY += 0;
+        // }
+        // else if(direction.equals("DOWN")){
+        //     trailX += 18;
+        //     trailY += 18/2f -2;
+        // }
+        // else if (direction.equals("RIGHT")){
+        //     trailX += 0;
+        //     trailY += 18 / 2f - 2;
+        // }
 
         trail.add(new float[]{(float) getX(),(float) getY()});
 
