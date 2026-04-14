@@ -21,6 +21,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
+import java.util.List;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
@@ -128,6 +129,9 @@ public class MyGame extends ApplicationAdapter {
         
         // pencil.rect(100,200,5,5);
         pencil.end();
+
+        //try to put collision in render method
+        // boolean p1Hit = isColliding(p1.getX(), p1.getY(), p2.getTrail()) || isColliding(p2.getX(), p2.getY(), p1.getTrail());
 
         //?
 
