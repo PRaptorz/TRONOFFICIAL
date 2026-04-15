@@ -82,6 +82,8 @@ public class MyGame extends ApplicationAdapter {
         
     }
 
+    
+
     //render() is the game loop, called approx 60 times per second
     @Override
     public void render() {

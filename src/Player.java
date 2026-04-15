@@ -1,6 +1,7 @@
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 /**/import java.util.ArrayList;
+import java.awt.Rectangle;
 
 public class Player extends GameObject{
 
@@ -8,11 +9,21 @@ public class Player extends GameObject{
     private final int COLORNUM = 1;
     private ArrayList<float[]> trail = new ArrayList<>();
     private String direction = "UP";
+    public Rectangle hitbox;
 
 
     public Player(double x, double y) {
         super(x, y, 18, 18, "assets/blueForward.png");
         speed = 200;
+        // this.x = x;
+        // this.y = y;
+        this.hitbox = new Rectangle();
+    }
+
+    public void update() {
+        // Always keep the hitbox synchronized with the player's position
+        // hitbox.x = this.x;
+        // hitbox.y = this.y;
     }
     public void move(double deltaTime) {
 
@@ -37,6 +48,7 @@ public class Player extends GameObject{
             setImg("assets/blueBackward.png");
             direction = "DOWN";
         }
+        
         // trail.add(new float[]{(float) getX(),(float) getY()});
 
         //*Note to Adam" Tried adding code here to fix postioning issues the light trail had, if you can find the problem, fix the code,and add code to Player2 class */
