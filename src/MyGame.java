@@ -120,7 +120,7 @@ public class MyGame extends ApplicationAdapter {
         batch.end();
 
         //LIGHT TRAIL CODE: postion has issues
-        pencil.begin(ShapeRenderer.ShapeType.Filled rectangle);
+        pencil.begin(ShapeRenderer.ShapeType.Filled);
         for(float[] pos : p1.getTrail()){
             pencil.setColor(Color.BLUE);
             pencil.rect(pos[0], pos[1], 10,10);
