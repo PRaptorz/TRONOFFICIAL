@@ -57,6 +57,7 @@ public class MyGame extends ApplicationAdapter {
         pencil = new ShapeRenderer();
         activeObjects = new ArrayList<GameObject>();
         background = new Texture("assets/TRON Background - small.png");
+        // Array List <Rectangle> blueHitboxes;
 
         p1 = new Player(300, 50);
         p2 = new Player2(300,500);
@@ -119,7 +120,7 @@ public class MyGame extends ApplicationAdapter {
         batch.end();
 
         //LIGHT TRAIL CODE: postion has issues
-        pencil.begin(ShapeRenderer.ShapeType.Filled);
+        pencil.begin(ShapeRenderer.ShapeType.Filled rectangle);
         for(float[] pos : p1.getTrail()){
             pencil.setColor(Color.BLUE);
             pencil.rect(pos[0], pos[1], 10,10);
@@ -144,17 +145,17 @@ public class MyGame extends ApplicationAdapter {
 
 
     // Collision Method into light trail: work in progress 
-        public boolean isColliding(float bikeX, float bikeY, List<float[]>trail){
-            for(float[] pos : trail){
-                float tx = pos[0];
-                float ty = pos[1];
+        // public boolean isColliding(float bikeX, float bikeY, List<float[]>trail){
+        //     for(float[] pos : trail){
+        //         float tx = pos[0];
+        //         float ty = pos[1];
 
-                if(bikeX < tx + 10 && bikeX +10 > tx && bikeY < ty + 10 && bikeY + 10 > ty){ 
-                    return true;
-                }
-            }
-            return false;
-        }
+        //         if(bikeX < tx + 10 && bikeX +10 > tx && bikeY < ty + 10 && bikeY + 10 > ty){ 
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
     
     @Override
     public void dispose() {
