@@ -123,7 +123,7 @@ public class MyGame extends ApplicationAdapter {
         pencil.begin(ShapeRenderer.ShapeType.Filled);
         for(float[] pos : p1.getTrail()){
             pencil.setColor(Color.BLUE);
-            pencil.rect(pos[0], pos[1], 10,10);
+            Rectangle r = new Rectangle(5,5,5,5);
         }
         for(float[] pos : p2.getTrail()){
             pencil.setColor(Color.YELLOW);
@@ -136,10 +136,7 @@ public class MyGame extends ApplicationAdapter {
         // pencil.rect(100,200,5,5);
         pencil.end();
 
-        //try to put collision in render method
-        // boolean p1Hit = isColliding(p1.getX(), p1.getY(), p2.getTrail()) || isColliding(p2.getX(), p2.getY(), p1.getTrail());
-
-        //?
+        
 
     }
 

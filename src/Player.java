@@ -8,6 +8,7 @@ public class Player extends GameObject{
     private int speed;
     private final int COLORNUM = 1;
     private ArrayList<float[]> trail = new ArrayList<>();
+    private ArrayList<Rectangle> trailHitboxes;
     private String direction = "UP";
     public Rectangle hitbox;
 
@@ -18,6 +19,7 @@ public class Player extends GameObject{
         // this.x = x;
         // this.y = y;
         this.hitbox = new Rectangle();
+        trailHitboxes = new ArrayList<Rectangle>();
     }
 
     public void update() {
@@ -70,6 +72,7 @@ public class Player extends GameObject{
         // }
 
         trail.add(new float[]{(float) getX(),(float) getY()});
+        trailHitboxes.add(new Rectangle(COLORNUM, COLORNUM, speed, COLORNUM)); //TODO
 
         
         
