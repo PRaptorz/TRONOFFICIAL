@@ -1,24 +1,30 @@
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Rectangle;
+
 /**/import java.util.ArrayList;
-import java.awt.Rectangle;
 
 public class Player extends GameObject{
 
     private int speed;
-    private final int COLORNUM = 1;
     private ArrayList<float[]> trail = new ArrayList<>();
     private ArrayList<Rectangle> trailHitboxes;
-    private String direction = "UP";
+    private String direction;
     public Rectangle hitbox;
+    private int rectSize;
+    private int prevX;
+    private int prevY;
 
 
     public Player(double x, double y) {
         super(x, y, 18, 18, "assets/blueForward.png");
+        prevX = -1;
+        prevY = -1;
         speed = 200;
         // this.x = x;
         // this.y = y;
         this.hitbox = new Rectangle();
+        this.rectSize = 5;
         trailHitboxes = new ArrayList<Rectangle>();
     }
 
@@ -51,32 +57,15 @@ public class Player extends GameObject{
             direction = "DOWN";
         }
         
-        // trail.add(new float[]{(float) getX(),(float) getY()});
+  
 
-        //*Note to Adam" Tried adding code here to fix postioning issues the light trail had, if you can find the problem, fix the code,and add code to Player2 class */
-        // float trailX = (float) getX();
-        // float trailY = (float) getY();
+        if(prevX != -1 && prevY != -1){
 
-        // if (direction.equals("UP")){
-            
-        //     trailX += 18/2f -2;
-        //     trailY += 0;
-        // }
-        // else if(direction.equals("DOWN")){
-        //     trailX += 18;
-        //     trailY += 18/2f -2;
-        // }
-        // else if (direction.equals("RIGHT")){
-        //     trailX += 0;
-        //     trailY += 18 / 2f - 2;
-        // }
+            trailHitboxes.add(new Rectangle(prevX, prevY, rectSize, rectSize)); 
+        }
+        prevX = (int)getX();
+        prevY = (int) getY();
 
-        trail.add(new float[]{(float) getX(),(float) getY()});
-        trailHitboxes.add(new Rectangle(COLORNUM, COLORNUM, speed, COLORNUM)); //TODO
-
-        
-        
-        
 
         //boundaries
         if(getX()<0){
@@ -96,8 +85,8 @@ public class Player extends GameObject{
             setImg("assets/Explosion.png"); 
         }
     }
-    public ArrayList<float[]> getTrail(){
-        return trail;
+    public ArrayList<Rectangle> getTrail(){
+        return trailHitboxes;
     }
     
 }

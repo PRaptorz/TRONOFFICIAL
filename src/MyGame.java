@@ -64,23 +64,7 @@ public class MyGame extends ApplicationAdapter {
 
         activeObjects.add(p1);
         activeObjects.add(p2);
-
-        // colornums = new int [100][100];
-
-        // int width = 800;
-        // int height = 600;
-        // // 0: empty, 1: player 1, 2: player 2
-        // int[][] colornum = new int[width][height]; 
-
-        // p2 = new Player2()
-
-        // camera = new OrthographicCamera();
-        // float height = 4000;
-        // float width = 3000;
-        // view = new FitViewport(width, height, camera);
-
-       
-        
+  
     }
 
     
@@ -115,19 +99,18 @@ public class MyGame extends ApplicationAdapter {
             obj.draw(batch);
         }
 
-      
-
         batch.end();
 
         //LIGHT TRAIL CODE: postion has issues
         pencil.begin(ShapeRenderer.ShapeType.Filled);
-        for(float[] pos : p1.getTrail()){
+        for(Rectangle r : p1.getTrail()){
             pencil.setColor(Color.BLUE);
-            Rectangle r = new Rectangle(5,5,5,5);
+            pencil.rect(r.getX(),r.getY(), r.getWidth(),r.getHeight());
+            
         }
-        for(float[] pos : p2.getTrail()){
+        for(Rectangle r : p2.getTrail()){
             pencil.setColor(Color.YELLOW);
-            pencil.rect(pos[0], pos[1], 10,10);
+            pencil.rect(r.getX(),r.getY(), r.getWidth(),r.getHeight());
         }
 
 
@@ -136,23 +119,28 @@ public class MyGame extends ApplicationAdapter {
         // pencil.rect(100,200,5,5);
         pencil.end();
 
+        for(Rectangle r : p1.getTrail()){
+
+            if(p1.getHitBox().overlaps(p2.getHitBox())){
+                System.out.print("XD");
+            }
+
+
+        }
+        for(Rectangle r : p2.getTrail()){
+
+            if(p2.getHitBox().overlaps(r)){
+                System.out.print("XD");
+            }
+
+
+        }
         
 
     }
 
 
-    // Collision Method into light trail: work in progress 
-        // public boolean isColliding(float bikeX, float bikeY, List<float[]>trail){
-        //     for(float[] pos : trail){
-        //         float tx = pos[0];
-        //         float ty = pos[1];
-
-        //         if(bikeX < tx + 10 && bikeX +10 > tx && bikeY < ty + 10 && bikeY + 10 > ty){ 
-        //             return true;
-        //         }
-        //     }
-        //     return false;
-        // }
+    
     
     @Override
     public void dispose() {
