@@ -121,7 +121,7 @@ public class MyGame extends ApplicationAdapter {
 
         for(Rectangle r : p1.getTrail()){
 
-            if(p1.getHitBox().overlaps(p2.getHitBox())){
+            if(p1.getHitBox().overlaps(r)){
                 System.out.print("XD");
             }
 

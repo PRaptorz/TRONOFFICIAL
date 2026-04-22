@@ -57,8 +57,11 @@ public class Player extends GameObject{
             direction = "DOWN";
         }
         
+        if(prevX == -1 || prevY == -1) {
+            prevX = (int)getX();
+            prevY = (int) getY();
+        }
   
-
         if(prevX != -1 && prevY != -1){
 
             trailHitboxes.add(new Rectangle(prevX, prevY, rectSize, rectSize)); 
