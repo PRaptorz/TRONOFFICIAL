@@ -67,7 +67,7 @@ public class MyGame extends ApplicationAdapter {
   
     }
 
-    
+   
 
     //render() is the game loop, called approx 60 times per second
     @Override
@@ -138,6 +138,34 @@ public class MyGame extends ApplicationAdapter {
         
 
     }
+
+    public void resetGame() {
+
+        //to be filled by @atom-wakelin
+
+        if (Gdx.isKeyPressed(Input.Keys.Q) == true) {
+
+
+        p1 = null;
+        p2 = null;
+
+        p1 = new Player(300, 50);
+        p2 = new Player2(300,500);
+
+        }
+    }
+
+    public void gameOver(){
+
+
+        //TODO: @atom-wakelim will finish this method (I use Arch BTW)
+
+
+
+        System.out.println("Anirudha");
+    }
+
+
 
 
     
