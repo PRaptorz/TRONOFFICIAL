@@ -119,18 +119,19 @@ public class MyGame extends ApplicationAdapter {
         // pencil.rect(100,200,5,5);
         pencil.end();
 
+        //collisions not working
         for(Rectangle r : p1.getTrail()){
 
-            if(p1.getHitBox().overlaps(r)){
-                System.out.print("XD");
+        if(p1.getHitBox().overlaps(r /*p2.getHitBox()*/)){
+                // System.out.print("XD");
             }
 
 
         }
         for(Rectangle r : p2.getTrail()){
 
-            if(p2.getHitBox().overlaps(r)){
-                System.out.print("XD");
+            if(p2.getHitBox().overlaps(r /*p1.getHitBox(r)"*/)){
+                // System.out.print("XD");
             }
 
 
