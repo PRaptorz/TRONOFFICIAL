@@ -20,7 +20,7 @@ public class Player extends GameObject{
         super(x, y, 18, 18, "assets/blueForward.png");
         prevX = -1;
         prevY = -1;
-        speed = 200;
+         speed = 200;
         // this.x = x;
         // this.y = y;
         this.hitbox = new Rectangle();
@@ -62,8 +62,7 @@ public class Player extends GameObject{
             prevY = (int) getY();
         }
   
-        if(prevX != -1 && prevY != -1){
-
+        if(prevX != (int)getX() || prevY != (int)getY()){
             trailHitboxes.add(new Rectangle(prevX, prevY, rectSize, rectSize)); 
         }
         prevX = (int)getX();

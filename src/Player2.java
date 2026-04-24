@@ -6,16 +6,14 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Player2 extends GameObject {
     
-        private int speed;
-        private ArrayList<float[]> trail = new ArrayList<>();
-        private ArrayList<Rectangle> trailHitboxes;
-        public Rectangle hitbox;
-        private int rectSize;
-        private String direction;
-        private int prevX;
-        private int prevY;
-        
-
+    private int speed;
+    private ArrayList<float[]> trail = new ArrayList<>();
+    private ArrayList<Rectangle> trailHitboxes;
+    public Rectangle hitbox;
+    private int rectSize;
+    private String direction;
+    private int prevX;
+    private int prevY;
 
     public Player2(double x, double y) {
         super(x, y, 18, 18, "assets/yellowBackward.png");
@@ -61,11 +59,8 @@ public class Player2 extends GameObject {
             prevX = (int)getX();
             prevY = (int) getY();
         }
-        if(prevX != getX() || prevY != getY()){
-
+         if(prevX != (int)getX() || prevY != (int)getY()){
             trailHitboxes.add(new Rectangle(prevX, prevY, rectSize, rectSize)); 
-            
-
         }
         prevX = (int)getX();
         prevY = (int) getY();
