@@ -69,26 +69,12 @@ public class Player extends GameObject{
         prevY = (int) getY();
 
 
-        //boundaries
-        if(getX()<0){
-            System.out.println("Out of bounds");
-            setImg("assets/Explosion.png");
-        }
-        if(getX()>750){
-            System.out.println("Out of bounds");
-            setImg("assets/Explosion.png");
-        }
-        if(getY()<0){
-            System.out.println("Out of bounds");
-            setImg("assets/Explosion.png"); 
-        }
-        if(getY()>735){
-            System.out.println("Out of bounds");
-            setImg("assets/Explosion.png"); 
-        }
     }
     public ArrayList<Rectangle> getTrail(){
         return trailHitboxes;
     }
     
+    public void stop() {
+        speed = 0;
+    }
 }

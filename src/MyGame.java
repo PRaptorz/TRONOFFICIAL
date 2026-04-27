@@ -48,6 +48,8 @@ public class MyGame extends ApplicationAdapter {
     private FitViewport view;
     private Player p1;
     private Player2 p2;
+    private boolean p1Crashed = false;
+    private boolean p2Crashed = false;
     // private int[][] colornums; 
 
 
@@ -87,6 +89,20 @@ public class MyGame extends ApplicationAdapter {
             obj.move(deltaTime);
         }
 
+        // boundaries check
+        if(!p1Crashed && (p1.getX() < 0 || p1.getX() > 750 || p1.getY() < 0 || p1.getY() > 735)){
+            System.out.println("Player 1 out of bounds");
+            p1Crashed = true;
+            p1.stop();
+            p1.setImg("assets/Explosion.png");
+        }
+        if(!p2Crashed && (p2.getX() < 0 || p2.getX() > 750 || p2.getY() < 0 || p2.getY() > 735)){
+            System.out.println("Player 2 out of bounds");
+            p2Crashed = true;
+            p2.stop();
+            p2.setImg("assets/Explosion.png");
+        }
+
 
 
         
@@ -121,29 +137,19 @@ public class MyGame extends ApplicationAdapter {
 
         //light trail collisions - check if each player hits opponent's trail
         for(Rectangle r : p2.getTrail()){
-            if(p1.getHitBox().overlaps(r)){
+            if(!p1Crashed && p1.getHitBox().overlaps(r)){
                 System.out.println("Player 1 hit Player 2's trail!");
-                gameOver();
+                p1Crashed = true;
+                p1.stop();
+                p1.setImg("assets/Explosion.png");
             }
         }
         for(Rectangle r : p1.getTrail()){
-            if(p2.getHitBox().overlaps(r)){
+            if(!p2Crashed && p2.getHitBox().overlaps(r)){
                 System.out.println("Player 2 hit Player 1's trail!");
-                gameOver();
-            }
-        }
-        
-        //check if players hit their own trail
-        for(Rectangle r : p1.getTrail()){
-            if(p1.getHitBox().overlaps(r)){
-                System.out.println("Player 1 hit their own trail!");
-                gameOver();
-            }
-        }
-        for(Rectangle r : p2.getTrail()){
-            if(p2.getHitBox().overlaps(r)){
-                System.out.println("Player 2 hit their own trail!");
-                gameOver();
+                p2Crashed = true;
+                p2.stop();
+                p2.setImg("assets/Explosion.png");
             }
         }
     }
@@ -157,10 +163,14 @@ public class MyGame extends ApplicationAdapter {
 
         p1 = null;
         p2 = null;
+        //test
+        
 
         p1 = new Player(300, 50);
         p2 = new Player2(300,500);
 
+        p1Crashed = false;
+        p2Crashed = false;
         }
     }
 
