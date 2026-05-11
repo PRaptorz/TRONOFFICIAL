@@ -145,6 +145,14 @@ public class MyGame extends ApplicationAdapter {
         }
     }
 
+    //Keeps counter of blue and yellows scores
+    public void scoreCounter(){
+
+
+
+
+    }
+
     public void resetGame() {
 
         // to be filled by @atom-wakelin
