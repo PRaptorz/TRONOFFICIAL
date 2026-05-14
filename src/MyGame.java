@@ -15,6 +15,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -50,6 +51,7 @@ public class MyGame extends ApplicationAdapter {
     private Player2 p2;
     private boolean p1Crashed = false;
     private boolean p2Crashed = false;
+    BitmapFont font;
     // private int[][] colornums;
 
     @Override
@@ -65,6 +67,7 @@ public class MyGame extends ApplicationAdapter {
 
         activeObjects.add(p1);
         activeObjects.add(p2);
+        font = new BitmapFont();
 
     }
 
@@ -109,6 +112,8 @@ public class MyGame extends ApplicationAdapter {
             obj.draw(batch);
         }
 
+        font.draw(batch, "TEST123", 50, 50);
+
         batch.end();
 
         // LIGHT TRAIL CODE: postion has issues
@@ -146,8 +151,13 @@ public class MyGame extends ApplicationAdapter {
     }
 
     //Keeps counter of blue and yellows scores
+    //fix the reset game and game over method first, then make score counter
     public void scoreCounter(){
 
+        
+        int score = 0;
+
+        //font.draw(batch, score);
 
 
 
