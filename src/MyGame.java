@@ -44,12 +44,14 @@ public class MyGame extends ApplicationAdapter {
     private ShapeRenderer pencil;
     private ArrayList<GameObject> activeObjects;
     private Texture background;
+    private Texture winTexture;
     private OrthographicCamera camera;
     private FitViewport view;
     private Player p1;
     private Player2 p2;
     private boolean p1Crashed = false;
     private boolean p2Crashed = false;
+    private boolean isGameOver = false;
     // private int[][] colornums; 
 
 
@@ -85,8 +87,10 @@ public class MyGame extends ApplicationAdapter {
         double deltaTime = (double) Gdx.graphics.getDeltaTime();
 
         // For each object, call its move() method.
-        for(GameObject obj : activeObjects){
-            obj.move(deltaTime);
+        if (!isGameOver) {
+            for(GameObject obj : activeObjects){
+                obj.move(deltaTime);
+            }
         }
 
         // boundaries check
@@ -95,17 +99,26 @@ public class MyGame extends ApplicationAdapter {
             p1Crashed = true;
             p1.stop();
             p1.setImg("assets/Explosion.png");
+            if (!isGameOver) {
+                gameOver();
+            }
         }
         if(!p2Crashed && (p2.getX() < 0 || p2.getX() > 750 || p2.getY() < 0 || p2.getY() > 735)){
             System.out.println("Player 2 out of bounds");
             p2Crashed = true;
             p2.stop();
             p2.setImg("assets/Explosion.png");
+            if (!isGameOver) {
+                gameOver();
+            }
         }
 
 
 
         
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            resetGame();
+        }
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
         
@@ -142,6 +155,9 @@ public class MyGame extends ApplicationAdapter {
                 p1Crashed = true;
                 p1.stop();
                 p1.setImg("assets/Explosion.png");
+                if (!isGameOver) {
+                    gameOver();
+                }
             }
         }
         for(Rectangle r : p1.getTrail()){
@@ -150,38 +166,51 @@ public class MyGame extends ApplicationAdapter {
                 p2Crashed = true;
                 p2.stop();
                 p2.setImg("assets/Explosion.png");
+                if (!isGameOver) {
+                    gameOver();
+                }
             }
+        }
+
+        if (isGameOver && winTexture != null) {
+            batch.begin();
+            batch.draw(winTexture,
+                0,
+                0,
+                Gdx.graphics.getWidth(),
+                Gdx.graphics.getHeight());
+            batch.end();
         }
     }
 
     public void resetGame() {
+        activeObjects.clear();
 
-        //to be filled by @atom-wakelin
+        if (winTexture != null) {
+            winTexture.dispose();
+            winTexture = null;
+        }
 
-        if (Gdx.isKeyPressed(Input.Keys.Q) == true) {
-
-
-        p1 = null;
-        p2 = null;
-        //test
-        
-
+        isGameOver = false;
         p1 = new Player(300, 50);
-        p2 = new Player2(300,500);
+        p2 = new Player2(300, 500);
+
+        activeObjects.add(p1);
+        activeObjects.add(p2);
 
         p1Crashed = false;
         p2Crashed = false;
-        }
     }
 
     public void gameOver(){
-
-
-        //TODO: @atom-wakelim will finish this method (I use Arch BTW)
-
-
-
-        System.out.println("Anirudha");
+        isGameOver = true;
+        if (p1Crashed && !p2Crashed) {
+            winTexture = new Texture("assets/yellowWin.png");
+        } else if (p2Crashed && !p1Crashed) {
+            winTexture = new Texture("assets/blueWin.png");
+        } else {
+            winTexture = new Texture("assets/yellowWin.png");
+        }
     }
 
 
