@@ -53,6 +53,8 @@ public class MyGame extends ApplicationAdapter {
     private boolean p1Crashed = false;
     private boolean p2Crashed = false;
     private boolean isGameOver = false;
+    private int blueScore = 0;
+    private int yellowScore = 0;
     BitmapFont font;
     // private int[][] colornums;
 
@@ -70,7 +72,8 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(p1);
         activeObjects.add(p2);
         font = new BitmapFont();
-
+        blueScore = 0;
+        yellowScore = 0;
     }
 
     // render() is the game loop, called approx 60 times per second
@@ -125,7 +128,7 @@ public class MyGame extends ApplicationAdapter {
             obj.draw(batch);
         }
 
-        font.draw(batch, "TEST123", 50, 50);
+        scoreCounter();
 
         batch.end();
 
@@ -182,14 +185,13 @@ public class MyGame extends ApplicationAdapter {
     //Keeps counter of blue and yellows scores
     //fix the reset game and game over method first, then make score counter
     public void scoreCounter(){
+        font.setColor(Color.BLUE);
+        font.draw(batch, "Blue: " + blueScore, 50, 50);
 
-        
-        int score = 0;
+        font.setColor(Color.YELLOW);
+        font.draw(batch, "Yellow: " + yellowScore, Gdx.graphics.getWidth() - 150, 50);
 
-        //font.draw(batch, score);
-
-
-
+        font.setColor(Color.WHITE);
     }
 
     public void resetGame() {
@@ -215,8 +217,10 @@ public class MyGame extends ApplicationAdapter {
         isGameOver = true;
         if (p1Crashed && !p2Crashed) {
             winTexture = new Texture("assets/yellowWin.png");
+            yellowScore++;
         } else if (p2Crashed && !p1Crashed) {
             winTexture = new Texture("assets/blueWin.png");
+            blueScore++;
         } else {
             winTexture = new Texture("assets/yellowWin.png");
         }
@@ -225,5 +229,6 @@ public class MyGame extends ApplicationAdapter {
     @Override
     public void dispose() {
         batch.dispose();
+        font.dispose();
     }
 }

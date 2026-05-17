@@ -17,7 +17,7 @@ public class Player2 extends GameObject {
 
     public Player2(double x, double y) {
         super(x, y, 18, 18, "assets/yellowBackward.png");
-        speed = 200;
+        speed = 300;
         prevX = -1;
         prevY = -1;
         this.hitbox = new Rectangle();

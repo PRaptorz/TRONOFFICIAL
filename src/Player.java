@@ -20,7 +20,7 @@ public class Player extends GameObject{
         super(x, y, 18, 18, "assets/blueForward.png");
         prevX = -1;
         prevY = -1;
-         speed = 200;
+         speed = 300;
         // this.x = x;
         // this.y = y;
         this.hitbox = new Rectangle();

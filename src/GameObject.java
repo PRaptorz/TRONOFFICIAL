@@ -18,8 +18,8 @@ public class GameObject {
         this.width = width;
         this.height = height;
         this.image = new Texture(imagePath);
-        // AP Review: Casting double to int for the LibGDX Rectangle class
-        this.hitbox = new Rectangle((int) x, (int) y, image.getWidth(), image.getHeight());
+        // Use the logical object width/height for collisions, not the raw texture size.
+        this.hitbox = new Rectangle((int) x, (int) y, width, height);
     }
 
     // TODO 1: Write getter methods for x, y, and hitbox.
@@ -50,7 +50,8 @@ public class GameObject {
     }
     public void setImg(String imagePath){
         this.image = new Texture(imagePath);
-        this.hitbox = new Rectangle((int) x, (int) y, image.getWidth(), image.getHeight());
+        // Keep the hitbox size consistent with the logical object dimensions.
+        this.hitbox = new Rectangle((int) x, (int) y, width, height);
     }
 
 
