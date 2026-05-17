@@ -15,6 +15,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -39,7 +40,7 @@ public class MyGame extends ApplicationAdapter {
     float dropTimer;
     Rectangle bucketRectangle;
     Rectangle dropRectangle;
-    
+
     private SpriteBatch batch;
     private ShapeRenderer pencil;
     private ArrayList<GameObject> activeObjects;
@@ -52,8 +53,8 @@ public class MyGame extends ApplicationAdapter {
     private boolean p1Crashed = false;
     private boolean p2Crashed = false;
     private boolean isGameOver = false;
-    // private int[][] colornums; 
-
+    BitmapFont font;
+    // private int[][] colornums;
 
     @Override
     public void create() {
@@ -64,25 +65,24 @@ public class MyGame extends ApplicationAdapter {
         // Array List <Rectangle> blueHitboxes;
 
         p1 = new Player(300, 50);
-        p2 = new Player2(300,500);
+        p2 = new Player2(300, 500);
 
         activeObjects.add(p1);
         activeObjects.add(p2);
-  
+        font = new BitmapFont();
+
     }
 
-   
-
-    //render() is the game loop, called approx 60 times per second
+    // render() is the game loop, called approx 60 times per second
     @Override
     public void render() {
         // Boilerplate: Clear the screen to black each frame
         // view.apply();
         Gdx.gl.glClearColor(.25f, .25f, .25f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // --- AP REVIEW: CASTING ---
-        // Gdx.graphics.getDeltaTime() returns a float. 
+        // Gdx.graphics.getDeltaTime() returns a float.
         // We cast it to a double to stay strictly within the AP CSA Java standards.
         double deltaTime = (double) Gdx.graphics.getDeltaTime();
 
@@ -94,7 +94,7 @@ public class MyGame extends ApplicationAdapter {
         }
 
         // boundaries check
-        if(!p1Crashed && (p1.getX() < 0 || p1.getX() > 750 || p1.getY() < 0 || p1.getY() > 735)){
+        if (!p1Crashed && (p1.getX() < 0 || p1.getX() > 750 || p1.getY() < 0 || p1.getY() > 735)) {
             System.out.println("Player 1 out of bounds");
             p1Crashed = true;
             p1.stop();
@@ -103,7 +103,7 @@ public class MyGame extends ApplicationAdapter {
                 gameOver();
             }
         }
-        if(!p2Crashed && (p2.getX() < 0 || p2.getX() > 750 || p2.getY() < 0 || p2.getY() > 735)){
+        if (!p2Crashed && (p2.getX() < 0 || p2.getX() > 750 || p2.getY() < 0 || p2.getY() > 735)) {
             System.out.println("Player 2 out of bounds");
             p2Crashed = true;
             p2.stop();
@@ -113,44 +113,40 @@ public class MyGame extends ApplicationAdapter {
             }
         }
 
-
-
-        
         if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
             resetGame();
         }
-        //Note: Anything drawn must be between .begin() and .end()
+        // Note: Anything drawn must be between .begin() and .end()
         batch.begin();
-        
+
         batch.draw(background, 0, 0);
 
-        for(GameObject obj : activeObjects){
+        for (GameObject obj : activeObjects) {
             obj.draw(batch);
         }
 
+        font.draw(batch, "TEST123", 50, 50);
+
         batch.end();
 
-        //LIGHT TRAIL CODE: postion has issues
+        // LIGHT TRAIL CODE: postion has issues
         pencil.begin(ShapeRenderer.ShapeType.Filled);
-        for(Rectangle r : p1.getTrail()){
+        for (Rectangle r : p1.getTrail()) {
             pencil.setColor(Color.BLUE);
-            pencil.rect(r.getX(),r.getY(), r.getWidth(),r.getHeight());
-            
+            pencil.rect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+
         }
-        for(Rectangle r : p2.getTrail()){
+        for (Rectangle r : p2.getTrail()) {
             pencil.setColor(Color.YELLOW);
-            pencil.rect(r.getX(),r.getY(), r.getWidth(),r.getHeight());
+            pencil.rect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
         }
 
-
-        
-        
         // pencil.rect(100,200,5,5);
         pencil.end();
 
-        //light trail collisions - check if each player hits opponent's trail
-        for(Rectangle r : p2.getTrail()){
-            if(!p1Crashed && p1.getHitBox().overlaps(r)){
+        // light trail collisions - check if each player hits opponent's trail
+        for (Rectangle r : p2.getTrail()) {
+            if (!p1Crashed && p1.getHitBox().overlaps(r)) {
                 System.out.println("Player 1 hit Player 2's trail!");
                 p1Crashed = true;
                 p1.stop();
@@ -160,8 +156,8 @@ public class MyGame extends ApplicationAdapter {
                 }
             }
         }
-        for(Rectangle r : p1.getTrail()){
-            if(!p2Crashed && p2.getHitBox().overlaps(r)){
+        for (Rectangle r : p1.getTrail()) {
+            if (!p2Crashed && p2.getHitBox().overlaps(r)) {
                 System.out.println("Player 2 hit Player 1's trail!");
                 p2Crashed = true;
                 p2.stop();
@@ -181,6 +177,19 @@ public class MyGame extends ApplicationAdapter {
                 Gdx.graphics.getHeight());
             batch.end();
         }
+    }
+
+    //Keeps counter of blue and yellows scores
+    //fix the reset game and game over method first, then make score counter
+    public void scoreCounter(){
+
+        
+        int score = 0;
+
+        //font.draw(batch, score);
+
+
+
     }
 
     public void resetGame() {
@@ -213,11 +222,6 @@ public class MyGame extends ApplicationAdapter {
         }
     }
 
-
-
-
-    
-    
     @Override
     public void dispose() {
         batch.dispose();
