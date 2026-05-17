@@ -171,6 +171,69 @@ public class MyGame extends ApplicationAdapter {
             }
         }
 
+        /* Self-collision checks temporarily disabled - commenting out
+           while this feature is reworked. Original logic below for
+           reference.
+
+        // Self-collision checks: compute distance to each older trail point
+        // and trigger a crash when the player is within collision distance.
+        // Skip the most recent entries to avoid false positives while turning.
+        int skipRecent = 10;
+
+        ArrayList<Rectangle> p1Trail = p1.getTrail();
+        Rectangle p1Hit = p1.getHitBox();
+        float p1CenterX = p1Hit.x + p1Hit.width / 2f;
+        float p1CenterY = p1Hit.y + p1Hit.height / 2f;
+        float p1Radius = Math.max(p1Hit.width, p1Hit.height) / 2f;
+        int p1Limit = Math.max(0, p1Trail.size() - skipRecent);
+        for (int i = 0; i < p1Limit; i++) {
+            Rectangle r = p1Trail.get(i);
+            float rCenterX = r.x + r.width / 2f;
+            float rCenterY = r.y + r.height / 2f;
+            float rRadius = Math.max(r.width, r.height) / 2f;
+            float dist = (float) Math.hypot(p1CenterX - rCenterX, p1CenterY - rCenterY);
+            float collisionDist = p1Radius + rRadius + 1f; // buffer
+
+            if (dist <= collisionDist) {
+                System.out.println("Player 1 hit their own trail!");
+                if (!p1Crashed) {
+                    p1Crashed = true;
+                    p1.stop();
+                    p1.setImg("assets/Explosion.png");
+                    if (!isGameOver) gameOver();
+                }
+                break;
+            }
+        }
+
+        ArrayList<Rectangle> p2Trail = p2.getTrail();
+        Rectangle p2Hit = p2.getHitBox();
+        float p2CenterX = p2Hit.x + p2Hit.width / 2f;
+        float p2CenterY = p2Hit.y + p2Hit.height / 2f;
+        float p2Radius = Math.max(p2Hit.width, p2Hit.height) / 2f;
+        int p2Limit = Math.max(0, p2Trail.size() - skipRecent);
+        for (int i = 0; i < p2Limit; i++) {
+            Rectangle r = p2Trail.get(i);
+            float rCenterX = r.x + r.width / 2f;
+            float rCenterY = r.y + r.height / 2f;
+            float rRadius = Math.max(r.width, r.height) / 2f;
+            float dist = (float) Math.hypot(p2CenterX - rCenterX, p2CenterY - rCenterY);
+            float collisionDist = p2Radius + rRadius + 1f;
+
+            if (dist <= collisionDist) {
+                System.out.println("Player 2 hit their own trail!");
+                if (!p2Crashed) {
+                    p2Crashed = true;
+                    p2.stop();
+                    p2.setImg("assets/Explosion.png");
+                    if (!isGameOver) gameOver();
+                }
+                break;
+            }
+        }
+
+        */
+
         if (isGameOver && winTexture != null) {
             batch.begin();
             batch.draw(winTexture,
