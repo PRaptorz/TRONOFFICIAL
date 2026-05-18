@@ -116,7 +116,7 @@ public class MyGame extends ApplicationAdapter {
             }
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.H)) {
             resetGame();
         }
         // Note: Anything drawn must be between .begin() and .end()
