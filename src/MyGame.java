@@ -56,7 +56,7 @@ public class MyGame extends ApplicationAdapter {
     private int blueScore = 0;
     private int yellowScore = 0;
     BitmapFont font;
-    // private int[][] colornums;
+    
 
     @Override
     public void create() {
@@ -64,7 +64,7 @@ public class MyGame extends ApplicationAdapter {
         pencil = new ShapeRenderer();
         activeObjects = new ArrayList<GameObject>();
         background = new Texture("assets/tronbackofficial.png");
-        // Array List <Rectangle> blueHitboxes;
+        
 
         p1 = new Player(300, 50);
         p2 = new Player2(300, 500);
