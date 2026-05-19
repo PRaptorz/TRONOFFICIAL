@@ -63,7 +63,7 @@ public class MyGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         pencil = new ShapeRenderer();
         activeObjects = new ArrayList<GameObject>();
-        background = new Texture("assets/TRON Background - small.png");
+        background = new Texture("assets/tronbackofficial.png");
         // Array List <Rectangle> blueHitboxes;
 
         p1 = new Player(300, 50);
